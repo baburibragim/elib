@@ -1,0 +1,7 @@
+<div class="text-2xl font-bold pb-2">Новинки</div>
+
+<%= link_to 'Добавить книгу',
+            new_book_path,
+            class: 'text-lg font-bold bg-blue-500 text-white px-6 py-2 inline-block mr-6' %>
+
+<%= render 'cards', books: @books %>

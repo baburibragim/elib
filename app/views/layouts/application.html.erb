@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Elib</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="max-w-3xl mx-auto px-6 py-10">
+
+      <%= render 'layouts/header' %>
+
+      <main class="pt-3 pb-3">
+        <%= render 'layouts/flash' %>
+        
+        <%= yield %>
+      </main>
+
+    </div>
+  </body>
+</html>

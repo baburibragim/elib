@@ -1,0 +1,22 @@
+<% books.each do |book| %>
+  <section class="flex p-6 my-4 bg-green-50">
+      <div class="flex-none w-48 h-72 relative">
+        <%= link_to cover(book), book %>
+      </div>
+
+      <div class="flex-auto p-6">
+        <h1 class="flex-auto text-xl font-bold pb-2">
+          <%= link_to book.name, book, class: 'text-blue-500 text-2xl hover:underline hover:text-blue-500' %>
+        </h1>
+        <div class="w-full flex-none text-sm font-medium text-gray-500 mt-2">
+          <%= availability book %>
+        </div>
+        <p class="text-base text-gray-600 my-4 font-bold">
+          📗🖊️ <%= book.author %>
+        </p>
+        <p>
+          <%= truncate book.description, length: 235, separator: ' ' %>
+        </p>
+      </div>
+  </section>
+<% end %>

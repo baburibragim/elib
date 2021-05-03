@@ -1,0 +1,78 @@
+<%= form_with(model: book, local: true, class: 'flex flex-col') do |f| %>
+
+  <% unless book.name.blank? %>
+    <h1 class='text-xl font-bold mb-5'>
+      <%= book.name %>
+    </h1>
+  <% end %>
+
+  <div class="mb-4">
+    <%= book.errors.full_messages.to_sentence %>
+  </div>
+
+  <div class="mb-4">
+    <%= f.label :name, 'Название', class: 'text-gray-600' %><br>
+    <%= f.text_field :name,
+                      autofocus: true, 
+                      size: 33,
+                      class: 'focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none text-base text-black placeholder-gray-500 border-2 border-blue-200 py-2 pl-4 w-96' %>
+  </div>
+
+  <div class="mb-4">
+    <%= f.label :author, 'Автор', class: 'text-gray-600' %><br>
+    <%= f.text_field :author, 
+                      size: 33,
+                      class: 'focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none text-base text-black placeholder-gray-500 border-2 border-blue-200 py-2 pl-4 w-96' %>
+  </div>
+
+  <div class="mb-4">
+    <%= f.label :description, 'Описание', class: 'text-gray-600' %><br>
+    <%= f.text_area :description, 
+                    rows: 9, 
+                    cols: 65,
+                    class: 'focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none text-base text-black placeholder-gray-500 border-2 border-blue-200 py-2 pl-4 w-full' %>
+  </div>
+
+  <div class="mb-4">
+    <%= f.label :image_src, 'Ссылка на обложку', class: 'text-gray-600' %><br>
+    <%= f.text_field :image_src, 
+                      size: 33,
+                      class: 'focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none text-base text-black placeholder-gray-500 border-2 border-blue-200 py-2 pl-4 w-96' %>
+  </div>
+
+  <div class="mb-4">
+    <%= f.label :category, 'Категория', class: 'text-gray-600' %><br>
+    <%= f.text_field :category, 
+                      size: 33,
+                      list: 'book_categories',
+                      class: 'focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none text-base text-black placeholder-gray-500 border-2 border-blue-200 py-2 pl-4 w-96' %>
+  </div>
+
+  <div class="mb-4">
+    <%= f.label :almaty_quantity, 'Количество (Алматы)', class: 'text-gray-600' %><br>
+    <%= f.number_field :almaty_quantity, 
+                        min: 0, 
+                        size: 33,
+                        class: 'focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none text-base text-black placeholder-gray-500 border-2 border-blue-200 py-2 pl-4 w-96' %>
+  </div>
+
+  <div class="mb-4">
+    <%= f.label :shymkent_quantity, 'Количество (Шымкент)', class: 'text-gray-600' %><br>
+    <%= f.number_field :shymkent_quantity, 
+                        min: 0, 
+                        size: 33,
+                        class: 'focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none text-base text-black placeholder-gray-500 border-2 border-blue-200 py-2 pl-4 w-96' %>
+  </div>
+
+  <div class="mb-4">
+    <%= f.submit 'Сохранить',
+                  class: 'cursor-pointer text-lg font-bold bg-blue-500 text-white px-6 py-2 inline-block mr-6' %>
+  </div>
+
+<% end %>
+
+<datalist id="book_categories">
+  <% @categories.each do |category| %>
+    <option value="<%= category.name %>">
+  <% end %>
+</datalist>
